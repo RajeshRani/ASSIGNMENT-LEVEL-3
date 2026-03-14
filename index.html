@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CodeCraft 2026</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#fff0f6;
+}
+
+header{
+    background:#e91e63;
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+section{
+    width:90%;
+    max-width:900px;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+    color:#e91e63;
+}
+
+fieldset{
+    margin-bottom:15px;
+    padding:15px;
+    border:2px solid #f06292;
+    border-radius:8px;
+}
+
+legend{
+    font-weight:bold;
+    color:#d81b60;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+    margin-bottom:10px;
+    border:1px solid #f48fb1;
+    border-radius:5px;
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+    width:auto;
+}
+
+.inline-group{
+    display:flex;
+    gap:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+th, td{
+    border:1px solid #f8bbd0;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#ec407a;
+    color:white;
+}
+
+/* BUTTON STYLE */
+
+.submit-btn{
+    background:#ff4081;
+    color:white;
+    padding:12px 20px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.reset-btn{
+    background:#f06292;
+    color:white;
+    padding:12px 20px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.submit-btn:hover{
+    background:#c2185b;
+}
+
+.reset-btn:hover{
+    background:#ad1457;
+}
+
+footer{
+    text-align:center;
+    background:#e91e63;
+    color:white;
+    padding:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>CodeCraft 2026</h1>
+<p>
+CodeCraft 2026 is a technical workshop organized by the 
+Department of Computer Science, Nazareth College of Arts and Science.
+</p>
+</header>
+
+<section>
+
+<h2>Registration Form</h2>
+
+<form id="regForm">
+
+<fieldset>
+<legend>Personal Information</legend>
+
+Name
+<input type="text" id="name">
+
+Email
+<input type="email" id="email">
+
+Phone
+<input type="tel" id="phone">
+
+</fieldset>
+
+<fieldset>
+
+<legend>Event Selection</legend>
+
+<select id="event">
+<option>Frontend Development</option>
+<option>AI Basics</option>
+<option>Cyber Security</option>
+</select>
+
+<div class="inline-group">
+<label><input type="radio" name="mode" value="Online"> Online</label>
+<label><input type="radio" name="mode" value="Offline"> Offline</label>
+</div>
+
+</fieldset>
+
+<button type="submit" class="submit-btn">Register</button>
+<button type="reset" class="reset-btn">Reset</button>
+
+</form>
+
+</section>
+
+<section>
+
+<h2>Registered Participants</h2>
+
+<table id="participantTable">
+
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Event</th>
+<th>Mode</th>
+</tr>
+
+</table>
+
+</section>
+
+<footer>
+<p>Contact Email: events@ncas.edu</p>
+<p>Help Desk Number: +91 94444 12345</p>
+</footer>
+
+
+<script>
+
+document.getElementById("regForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let phone=document.getElementById("phone").value;
+let event=document.getElementById("event").value;
+let mode=document.querySelector('input[name="mode"]:checked');
+
+if(!mode){
+alert("Please select mode");
+return;
+}
+
+mode=mode.value;
+
+let table=document.getElementById("participantTable");
+
+let row=table.insertRow();
+
+row.insertCell(0).innerHTML=name;
+row.insertCell(1).innerHTML=email;
+row.insertCell(2).innerHTML=phone;
+row.insertCell(3).innerHTML=event;
+row.insertCell(4).innerHTML=mode;
+
+alert("Registration Successful!");
+
+document.getElementById("regForm").reset();
+
+});
+
+</script>
+
+</body>
+</html>
